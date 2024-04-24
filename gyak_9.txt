@@ -1,0 +1,15 @@
+//20
+match (p:person)-[:DIRECTED]->(m.Movie)
+with p.name AS `nev`, count(*) AS `db`
+where db > 1
+return nev, db
+
+//21
+match (p:Person)-[:ACTED_IN]->(m:Movie)<-[D:DIRECTED]-(p:Person)
+return p:name
+
+//22
+match (p:Person)-[:ACTED_IN]->(m:Movie)
+with m.title AS cim, count(*) AS db
+return cim, db
+order by db DESC, db ASC
