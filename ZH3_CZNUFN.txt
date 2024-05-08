@@ -1,0 +1,55 @@
+1. Feladat
+
+Filter:
+{
+  "genres.0": "Short",
+  "year": { "$gte": 1945, "$lte": 1970 }
+}
+Project:
+{
+  "_id": 0,
+  "title": 1,
+  "year": 1
+}
+Sort:
+{
+  "year": 1,
+  "title": 1
+}
+
+2. Feladat
+
+use sample_mflix
+
+db.users.find({"email":{"$regex":"\\.com$"}},{"name":1,"email":1,"_id":0})
+
+3. Feladat
+
+db.movies.aggregate([{$match: {year:{$gt:1950}}},{$group:{_id:"$rated",atlag:{$avg:"$runtime"}}}])
+
+
+
+
+4. Feladat
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+ 
+WITH p.name AS `Nev`, m.title AS `Cim`, m.released AS `Megjelenes`
+ 
+WHERE m.released > 1960
+ 
+RETURN Nev, Cim, Megjelenes
+ 
+ORDER BY Megjelenes DESC
+
+5. Feladat
+
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+
+WHERE p.born > 1980
+
+WITH p, count(m) AS NumMoviesActedIn
+
+RETURN p.name AS Actor, p.born AS BirthYear, NumMoviesActedIn
+
+ORDER BY Actor
