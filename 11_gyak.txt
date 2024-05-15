@@ -1,0 +1,14 @@
+HSET dolgozo:1 nev "Kiss Ilona" munkakor titkarno kod 1
+
+> HSET dolgozo:2 nev "Nagy Eva" munkakor konyvelo kod 2
+
+> HSET projekt:3 projektnev "EURO_33"
+
+> HSET projekt:2 projektnev "TRANS-22"
+
+> HSET munka:1 dolgozokod 1
+
+> HSET munka:3 dolgozokod 2
+
+> ZADD dolgozo:nev 1 "Kiss Ilona" 2 "Nagy Eva"
+
